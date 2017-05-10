@@ -41,17 +41,9 @@ public class LoginServlet extends HttpServlet {
 			if (user.getSenha().equals(req.getParameter("senha")))
 			{ 
 				Cookie cookie; 
-				//if (!checkToken(req))
-				//{
-					cookie = new Cookie("TOKEN", req.getRequestedSessionId());
-					//cookie.setMaxAge(15*60);
-					resp.addCookie(cookie);
-				/*}
-				else
-				{
-					cookie = getToken(req);
-					cookie.setValue(user.getId().toString() + req.getRequestedSessionId());
-				}*/
+				cookie = new Cookie("TOKEN", req.getRequestedSessionId());
+				resp.addCookie(cookie);
+
 				
 				RequestDispatcher requestDispatcher = req.getRequestDispatcher("/news/list");
 				requestDispatcher.forward(req, resp);

@@ -29,6 +29,8 @@ public class FronControllerFilter implements Filter {
 
 	private final String TOKEN = "TOKEN";
 	private final String loginPath = "/login";
+	private final String logoutPath = "/logout";
+	private boolean userLogado;
 
 	
 	/**
@@ -57,14 +59,16 @@ public class FronControllerFilter implements Filter {
 		
 		String path = req.getServletPath();
 		
-		if (!checkToken(req) || validaToken(req, req.getRequestedSessionId()))
+		userLogado = (checkToken(req) && validaToken(req, req.getRequestedSessionId())) ? true: false;
+				
+		if (userLogado)
 		{
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPath);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
 		}
 		else
 		{
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPath);
 			requestDispatcher.forward(request, response);
 		}
 	}
@@ -76,14 +80,11 @@ public class FronControllerFilter implements Filter {
 		// TODO Auto-generated method stub
 		
 		UserDaoImpl dao = new UserDaoImpl();
-		//List<User> users = dao.findAll();
-		//if (users.size() == 0)
-		//{
-			User user = new User();
-			user.setLogin("user");
-			user.setSenha("1234");
-			dao.save(user);
-		//}
+
+		User user = new User();
+		user.setLogin("user");
+		user.setSenha("1234");
+		dao.save(user);
 		
 	}
 	
@@ -91,15 +92,16 @@ public class FronControllerFilter implements Filter {
 	private boolean checkToken(HttpServletRequest req)
 	{
 		boolean hasToken = false;
-		
-		for (Cookie c : req.getCookies())
+		if (req.getCookies() != null)
 		{
-			hasToken = c.getName().equals(TOKEN) ? true : false;
-			System.out.println("nome " + c.getName() + ", valor: " + c.getValue());
-			if (hasToken)
-				break;
+		for (Cookie c : req.getCookies())
+			{
+				hasToken = c.getName().equals(TOKEN) ? true : false;
+				System.out.println("nome " + c.getName() + ", valor: " + c.getValue());
+				if (hasToken)
+					break;
+			}
 		}
-		
 		return hasToken;
 	}
 	
@@ -109,9 +111,11 @@ public class FronControllerFilter implements Filter {
 		
 		for (Cookie c : req.getCookies())
 		{
-			tokenOk = c.getName().equals(req.getRequestedSessionId()) ? true : false;
-			if (tokenOk)
+			if (c.getName().equals(TOKEN))
+			{
+				tokenOk = c.getValue().equals(req.getRequestedSessionId()) ? true : false;
 				break;
+			}
 		}
 		return tokenOk;
 	}
