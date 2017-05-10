@@ -8,4 +8,7 @@
     <param-name>images-folder</param-name>
     <param-value>/Users/Delano Jr/Pictures/</param-value>
   </context-param>
+  <session-config>
+  	<session-timeout>30</session-timeout>
+  </session-config>
 </web-app>
