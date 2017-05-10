@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import colarinhobranco.dao.UserDao;
-import colarinhobranco.model.News;
 import colarinhobranco.model.User;
 import colarinhobranco.util.JPAUtil;
 
@@ -16,7 +15,7 @@ public class UserDaoImpl implements UserDao {
 	public User save(User user) {
 		EntityManager manager = new JPAUtil().getEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
-		
+
 		try {
 			transaction.begin();
 			manager.persist(user);
@@ -25,22 +24,22 @@ public class UserDaoImpl implements UserDao {
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			if (transaction.isActive()) {
 				transaction.rollback();
 			}
-			
-			return null;			
+
+			return null;
 		} finally {
 			manager.close();
 		}
-		
+
 	}
 
 	@Override
 	public User get(Integer id) {
-EntityManager manager = new JPAUtil().getEntityManager();
-		
+		EntityManager manager = new JPAUtil().getEntityManager();
+
 		try {
 			return manager.find(User.class, id);
 		} finally {
@@ -51,7 +50,7 @@ EntityManager manager = new JPAUtil().getEntityManager();
 	@Override
 	public List<User> findAll() {
 		EntityManager manager = new JPAUtil().getEntityManager();
-		
+
 		try {
 			return manager.createQuery("select n from User n", User.class).getResultList();
 		} finally {
