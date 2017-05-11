@@ -2,6 +2,7 @@
 <nav id="site-navbar">
 	<ul>
 		<li><a href="<c:url value='/news/list'/>">Notícias</a></li>
-		<li><a href="<c:url value='/pages/news/edit.jsp'/>">Enviar</a></li>			
+		<li><a href="<c:url value='/pages/news/edit.jsp'/>">Enviar</a></li>
+		<li><a href="<c:url value='/logout'/>">Logout</a></li>			
 	</ul>
 </nav>
