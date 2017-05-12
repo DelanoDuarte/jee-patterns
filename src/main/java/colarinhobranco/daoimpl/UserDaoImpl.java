@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 
 import colarinhobranco.dao.UserDao;
 import colarinhobranco.model.User;
@@ -54,6 +55,24 @@ public class UserDaoImpl implements UserDao {
 		try {
 			return manager.createQuery("select n from User n", User.class).getResultList();
 		} finally {
+			manager.close();
+		}
+	}
+
+	@Override
+	public User get(String login) {
+		EntityManager manager = new JPAUtil().getEntityManager();
+		
+		try {
+			return manager.createQuery("select n from User n where n.login like :plogin", User.class)
+					.setParameter("plogin", login)
+					.getSingleResult();
+		}
+		catch(NoResultException e)
+		{
+			return null;
+		}
+		finally {
 			manager.close();
 		}
 	}
