@@ -19,7 +19,7 @@ public class ListServlet extends HttpServlet {
 		
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-		
+				
 		request.setAttribute("news", newsDao.findAll());
 		
 		request.getRequestDispatcher("/pages/news/list.jsp").forward(request, response);
