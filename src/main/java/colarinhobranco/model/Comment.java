@@ -42,6 +42,16 @@ public class Comment implements Serializable {
 	@JoinColumn(name = "id_news")
 	private News news;
 
+	public Comment() {
+		super();
+	}
+
+	public Comment(String comment, News news) {
+		super();
+		this.comment = comment;
+		this.news = news;
+	}
+
 	public Long getId() {
 		return id;
 	}

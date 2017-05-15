@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package colarinhobranco.daoimpl;
 
 import java.util.List;
@@ -5,24 +8,28 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import colarinhobranco.dao.NewsDao;
-import colarinhobranco.model.News;
+import colarinhobranco.dao.CommentDao;
+import colarinhobranco.model.Comment;
 import colarinhobranco.util.JPAUtil;
 
-public class NewsDaoImpl implements NewsDao {
+/**
+ * @author Delano Jr
+ *
+ */
+@SuppressWarnings("unchecked")
+public class CommentDaoImpl implements CommentDao {
 
 	@Override
-	public News save(News news) {
-
+	public Comment salvar(Comment comment) {
 		EntityManager manager = new JPAUtil().getEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 
 		try {
 			transaction.begin();
-			manager.merge(news);
+			manager.merge(comment);
 			manager.flush();
 			transaction.commit();
-			return news;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -30,35 +37,28 @@ public class NewsDaoImpl implements NewsDao {
 				transaction.rollback();
 			}
 
-			return null;
 		} finally {
+
 			manager.close();
 		}
 
+		return null;
 	}
 
-	public News get(Integer id) {
+	@Override
+	public List<Comment> buscarCommentariosPorPost(Integer id) {
 
 		EntityManager manager = new JPAUtil().getEntityManager();
 
 		try {
-			return manager.find(News.class, id);
+			return manager.createQuery("select c from Comment c where c.news.id = :idNews").setParameter("idNews", id)
+					.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			manager.close();
 		}
-
-	}
-
-	public List<News> findAll() {
-
-		EntityManager manager = new JPAUtil().getEntityManager();
-
-		try {
-			return manager.createQuery("select n from News n order by n.date desc", News.class).getResultList();
-		} finally {
-			manager.close();
-		}
-
+		return null;
 	}
 
 }
