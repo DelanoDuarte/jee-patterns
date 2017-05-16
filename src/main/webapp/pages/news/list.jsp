@@ -33,6 +33,8 @@
 							</h3>
 						</div>
 					</div>
+
+
 					<div class="content-footer">
 						<img class="user-small-img"
 							src="https://www.atomix.com.au/media/2015/06/atomix_user31.png">
@@ -50,7 +52,7 @@
 									class="img-responsive">
 							</div>
 							<span class="user-full-ditels">
-								<h3>Informações de que postou !</h3>
+								<h3>Informações de quem postou !</h3>
 							</span>
 							<div class="social-icon">
 								<a href="#"><i class="fa fa-facebook" data-toggle="tooltip"

@@ -15,13 +15,18 @@
 	<jsp:include page="/WEB-INF/snippets/site-header.jsp">
 		<jsp:param name="pageTitle" value="Enviar notícia" />
 	</jsp:include>
-	<aside>
-		<%@ include file="/WEB-INF/snippets/site-navbar.jsp"%>
-	</aside>
+
+
+	<%@ include file="/WEB-INF/snippets/site-navbar.jsp"%>
+
+
 	<div class="row">
 		<div class="col-md-12">
 
 			<div class="page-header" align="center">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/news-icon.png"
+					width="64" height="64" />
 				<h1>Nova Noticia</h1>
 			</div>
 
@@ -38,7 +43,7 @@
 
 					<div class="form-group">
 						<label for="date">Data e horário:</label>
-						<div class="input-group date" id="datetimepicker1">
+						<div class='input-group date' id='datetimepicker1'>
 							<input id="date" class="form-control" name="date"
 								type="datetime-local" required> <span
 								class="input-group-addon"> <span
@@ -48,7 +53,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="headline-content">Conteúdo:</label>
+						<label for="headline-content">Manchete:</label>
 						<textarea id="headline-content" name="headline-content" rows="3"
 							class="form-control" placeholder="Manchete" maxlength="350"
 							required></textarea>

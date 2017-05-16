@@ -34,7 +34,7 @@
 
 				<!-- Author -->
 				<p class="lead">
-					by <a href="#">Start Bootstrap</a>
+					by <a href=""><c:out value="${sessionScope.name}"/></a>
 				</p>
 
 				<hr>
@@ -54,6 +54,9 @@
 					height="300px">
 
 				<hr>
+				
+				<!-- Manchete -->
+				<h2>${news.headlineContent}</h2>
 
 				<!-- Post Content -->
 				<p>${news.content}</p>
@@ -102,19 +105,5 @@
 
 
 	</div>
-	<%-- 
-				<main>
-				<div id="site-content">
-					<article class="news">
-						<h1 class="title">${news.title}</h1>
-						<img
-							src="${pageContext.request.contextPath}/image?newsId=${news.id}&imageFileName=${news.headlineImage}"
-							alt="Eike Batista deixa presídio Bangu">
-						<div class="news-text">
-							<pre>${news.content}</pre>
-						</div>
-					</article>
-				</div>
-				</main> --%>
 </body>
 </html>

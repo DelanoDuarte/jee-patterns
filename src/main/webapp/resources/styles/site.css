@@ -4,7 +4,7 @@ body {
 
 #site-header {
 	background-color: rgb(74, 103, 138);
-	border-bottom: 5px solid #CCC;
+	border-bottom: 5px solid #4a678a;
 }
 
 #site-logo {
@@ -47,14 +47,13 @@ body {
 	font-size: 1.5em;
 	text-decoration: none;
 } */
-
-#site-content {
+/* #site-content {
 	float: left;
 	width: 80%;
 	margin-left: 30px;
 	padding-top: 20px;
 	padding-bottom: 40px;
-}
+} */
 
 #site-footer {
 	text-align: center;
