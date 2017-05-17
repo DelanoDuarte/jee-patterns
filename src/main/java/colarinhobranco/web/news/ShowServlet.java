@@ -16,7 +16,7 @@ import colarinhobranco.model.Comment;
 import colarinhobranco.model.News;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/news/show")
+//@WebServlet(urlPatterns = "/news/show")
 public class ShowServlet extends HttpServlet {
 
 	private NewsDao newsDao = new NewsDaoImpl();

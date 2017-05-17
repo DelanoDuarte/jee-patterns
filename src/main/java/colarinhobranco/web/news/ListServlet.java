@@ -14,7 +14,7 @@ import colarinhobranco.daoimpl.NewsDaoImpl;
 import colarinhobranco.model.News;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/news/list")
+//@WebServlet(urlPatterns = "/news/list")
 public class ListServlet extends HttpServlet {
 
 	private NewsDao newsDao = new NewsDaoImpl();

@@ -73,6 +73,7 @@
 						method="post">
 						<div class="form-group">
 							<textarea class="form-control" rows="3" name="comment"></textarea>
+							<input type="hidden" name="newsId" value="${news.id}"/>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>

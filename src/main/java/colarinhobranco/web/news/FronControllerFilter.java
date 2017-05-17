@@ -58,8 +58,8 @@ public class FronControllerFilter implements Filter {
 				
 		if (userLogado)
 		{
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
-			requestDispatcher.forward(request, response);
+			//request.getRequestDispatcher(path).forward(request, response);;
+			chain.doFilter(request, response);
 		}
 		else
 		{

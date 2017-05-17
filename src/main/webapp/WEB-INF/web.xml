@@ -6,7 +6,7 @@
   </welcome-file-list>
   <context-param>
     <param-name>images-folder</param-name>
-    <param-value>/Users/Delano Jr/Pictures/</param-value>
+    <param-value>/Users/lincolwn/Documents/Imagens</param-value>
   </context-param>
   <session-config>
     <session-timeout>30</session-timeout>
